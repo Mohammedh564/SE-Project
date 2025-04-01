@@ -64,11 +64,6 @@ The **public** directory contains all publicly accessible files, including asset
 
 ---
 
-## **`/storage`**
-This directory is used for storing logs, file uploads, and other data that the application needs to write to disk.
-
----
-
 ## **MVC Architecture Overview**
 This structure follows the **MVC (Model-View-Controller)** pattern, which helps to separate concerns and organize the code in a maintainable way:
 
@@ -77,5 +72,3 @@ This structure follows the **MVC (Model-View-Controller)** pattern, which helps 
 - **Controller**: Manages user input, communicates with models, and updates the view.
 
 ---
-
-This structure is clean, modular, and scalable, allowing for easy maintenance and expansion as the project grows.
