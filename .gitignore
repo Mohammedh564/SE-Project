@@ -1,0 +1,40 @@
+# XAMPP specific (avoid committing local DB and temporary files)
+/xampp/
+/mysql/
+/htdocs/
+
+# Ignore PHP session files
+*.session
+
+# Ignore log files
+*.log
+
+# Node modules (if applicable)
+node_modules/
+
+# Ignore OS-specific files (Windows)
+Thumbs.db
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+
+# Ignore any environment variables or configuration secrets (e.g., database credentials)
+.env
+
+# Ignore compiled or generated files
+*.min.css
+*.min.js
+
+# Ignore backup files
+*.bak
+*.swp
+
+# Ignore database dumps or SQL files
+*.sql
+
+# Ignore vendor or package directories for PHP
+/vendor/
+
+# Ignore compiled PHP files
+*.phar
