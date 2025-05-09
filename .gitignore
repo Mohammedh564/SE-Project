@@ -1,16 +1,8 @@
-# XAMPP specific (avoid committing local DB and temporary files)
-/xampp/
-/mysql/
-/htdocs/
-
 # Ignore PHP session files
 *.session
 
 # Ignore log files
 *.log
-
-# Node modules (if applicable)
-node_modules/
 
 # Ignore OS-specific files (Windows)
 Thumbs.db
@@ -29,9 +21,6 @@ Thumbs.db
 # Ignore backup files
 *.bak
 *.swp
-
-# Ignore database dumps or SQL files
-*.sql
 
 # Ignore vendor or package directories for PHP
 /vendor/
