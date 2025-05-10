@@ -1,6 +1,7 @@
 <?php
+include_once 'PlateFormUser.php';
 
-class User implements PlateformUser
+class User implements PlateFormUser
 {
     private string $userId;
     private string $name;
@@ -8,13 +9,13 @@ class User implements PlateformUser
     private string $password;
     private bool   $loggedIn = false;
 
-    public function __construct(string $userId, string $name, string $email, string $password)
-    {
-        $this->userId   = $userId;
-        $this->name     = $name;
-        $this->email    = $email;
-        $this->password = $password;
-    }
+    // public function __construct(string $userId, string $name, string $email, string $password)
+    // {
+    //     $this->userId   = $userId;
+    //     $this->name     = $name;
+    //     $this->email    = $email;
+    //     $this->password = $password;
+    // }
 
     public function login(string $userName, string $password): bool
     {
@@ -41,21 +42,54 @@ class User implements PlateformUser
     }
 
     // PlateformUser methods
-    public function register(array $userData): bool { /* TODO */ return false; }
+    public function register(array $userData): bool
+    { /* TODO */
+        return false;
+    }
 
     // Getters & Setters
-    public function getUserId(): string { return $this->userId; }
-    public function setUserId(string $id): void { $this->userId = $id; }
+    public function getUserId(): string
+    {
+        return $this->userId;
+    }
+    public function setUserId(string $id): void
+    {
+        $this->userId = $id;
+    }
 
-    public function getName(): string { return $this->name; }
-    public function setName(string $name): void { $this->name = $name; }
+    public function getName(): string
+    {
+        return $this->name;
+    }
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
 
-    public function getEmail(): string { return $this->email; }
-    public function setEmail(string $email): void { $this->email = $email; }
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
 
-    public function getPassword(): string { return $this->password; }
-    public function setPassword(string $password): void { $this->password = $password; }
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
 
-    public function isLoggedIn(): bool { return $this->loggedIn; }
-    public function setLoggedIn(bool $flag): void { $this->loggedIn = $flag; }
+    public function isLoggedIn(): bool
+    {
+        return $this->loggedIn;
+    }
+    public function setLoggedIn(bool $flag): void
+    {
+        $this->loggedIn = $flag;
+    }
 }
