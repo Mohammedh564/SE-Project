@@ -67,8 +67,7 @@
   <?php include './assets/components/navbar.php'; ?>
   <!-- / navbar -->
 
-  <!-- Content -->
-  <?php include './assets/components/card-donation.php'; ?>
+  
 
   <!-- footer -->
   <?php include './assets/components/footer.php'; ?>
