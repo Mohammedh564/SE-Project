@@ -1,57 +1,51 @@
 <?php
 // to include User we write 
-
 include_once 'User.php';
+include '../Controllers/DBController.php';
 class Admin extends User
 {
-    private $connection;
+    public $db; 
 
-    // public function __construct()
-    // {
-    //     $this->connection = new mysqli('localhost', 'root', '', 'OmarTest');
-    //     if ($this->connection->connect_error) {
-    //         die('Error in Connection: ' . $this->connection->connect_error);
-    //     }
-    // }
+    public function __construct()
+    {
+        // Initialize the DBController instance in the constructor
+        $this->db = new DBController();
+    }
 
     public function addUser($username, $email, $password): bool
     {
 
         // Check if the connection is established
-        if ($this->connection === null) {
-            $this->connection = new mysqli('localhost', 'root', '', 'OmarTest');
-        }
-        if ($this->connection->connect_error) {
-            die('Error in Connection: ' . $this->connection->connect_error);
-        }
+        if ($this->db->openConnection()) {
+            $query = "INSERT INTO user (name, email, password) VALUES ('$username', '$email', '$password')";
 
-        $query = "INSERT INTO user (name, email, password) VALUES ('$username', '$email', '$password')";
-
-        if ($this->connection->query($query) === TRUE) {
-            echo '<script>alert("User added successfully!");</script>';
-            return true;
-        } else {
-            echo '<script>alert("Error: ' . $this->connection->error . '");</script>';
-            return false;
+            if ($this->db->connection->query($query) === TRUE) {
+                echo '<script>alert("User added successfully!");</script>';
+                return true;
+            } else {
+                echo '<script>alert("Error: ' . $this->db->connection->error . '");</script>';
+                return false;
+            }
         }
+        return false;
     }
 
     public function deleteUser($username): bool
     {
-        if ($this->connection === null) {
-            $this->connection = new mysqli('localhost', 'root', '', 'OmarTest');
+        if ($this->db->connection === null) {
+            $this->db->connection = new mysqli('localhost', 'root', '', 'OmarTest');
         }
-        if ($this->connection->connect_error) {
-            die('Error in Connection: ' . $this->connection->connect_error);
+        if ($this->db->connection->connect_error) {
+            die('Error in Connection: ' . $this->db->connection->connect_error);
         }
 
         $query = "DELETE FROM user WHERE name = '$username'";
 
-        if ($this->connection->query($query) === TRUE) {
+        if ($this->db->connection->query($query) === TRUE) {
             echo '<script>alert("User deleted successfully!");</script>';
             return true;
         } else {
-            echo '<script>alert("Error: ' . $this->connection->error . '");</script>';
+            echo '<script>alert("Error: ' . $this->db->connection->error . '");</script>';
             return false;
         }
     }
