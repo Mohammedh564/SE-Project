@@ -1,3 +1,22 @@
+<?php
+require_once "../../Controllers/AuthController.php";
+require_once "../../Models/User.php";
+if(isset($_POST['email']) && isset($_POST['password'])){
+  if(!empty($_POST['email']) && !empty($_POST['password'])){
+    // $user = new User;
+    // $user->setEmail($_POST['email']);
+    // $user->setPassword($_POST['password']);
+    $auth = new AuthController;
+    $auth->login($user);
+
+  }
+  else {
+
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -189,7 +208,7 @@
               <form
                 id="formAuthentication"
                 class="mb-3"
-                action="index.html"
+                action="login.php"
                 method="POST"
               >
                 <div class="mb-3">
