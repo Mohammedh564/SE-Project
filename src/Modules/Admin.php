@@ -1,10 +1,10 @@
 <?php
 // to include User we write 
 include_once 'User.php';
-include '../Controllers/DBControllor.php';
+include '../Controllers/DBController.php';
 class Admin extends User
 {
-    public $db;
+    public $db; 
 
     public function __construct()
     {

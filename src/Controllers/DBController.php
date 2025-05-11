@@ -21,7 +21,7 @@ class DBController {
         return true; 
     } 
 
-    public function closeConnection(){ 
+    public function closeConnection(){  
         if ($this->connection){ 
             $this->connection->close(); 
         } 
@@ -29,7 +29,7 @@ class DBController {
             echo "connection is closed"; 
         } 
     } 
-    public function select($query) {  
+    public function select($query) {  // this method
         $result = $this->connection->query($query);  
         if ($result === TRUE) { 
             $result->fetch_all(MYSQLI_ASSOC);
