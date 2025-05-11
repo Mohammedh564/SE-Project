@@ -1,11 +1,12 @@
 <?php
-require_once "../../Controllers/AuthController.php";
-require_once "../../Models/User.php";
-if(isset($_POST['email']) && isset($_POST['password'])){
-  if(!empty($_POST['email']) && !empty($_POST['password'])){
-    // $user = new User;
-    // $user->setEmail($_POST['email']);
-    // $user->setPassword($_POST['password']);
+require_once '../../Modules/User.php';
+require_once "../../Controllers/DBControllor.php";
+require_once '../../Controllers/AuthController.php';
+if(isset($_POST['email-username']) && isset($_POST['password'])){
+  if(!empty($_POST['email-username']) && !empty($_POST['password'])){
+    $user = new User;
+    $user->setEmail($_POST['email-username']);
+    $user->setPassword($_POST['password']);
     $auth = new AuthController;
     $auth->login($user);
 

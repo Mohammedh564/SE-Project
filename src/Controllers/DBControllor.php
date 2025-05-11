@@ -1,9 +1,9 @@
-<?php  
+<?php
 class DBController {  
     public $dbHost = "localhost";  
     public $dbUser = "root";  
     public $dbPassword = "";  
-    public $dbName = "cahrity";  
+    public $dbName = "charity";  
     public $connection;  
     
     public function openConnection() {  
@@ -29,15 +29,15 @@ class DBController {
             echo "connection is closed"; 
         } 
     } 
+
     public function select($query) {  
         $result = $this->connection->query($query);  
-        if ($result === TRUE) { 
-            $result->fetch_all(MYSQLI_ASSOC);
-            return true;  
+        if ($result) { 
+            return $result->fetch_all(MYSQLI_ASSOC);
         } else {  
-            echo "Error: " .mysqli_error($this->connection);  
+            echo "Error: " . $this->connection->error;  
             return false;  
         }  
     }
 }  
-?>  
+?>

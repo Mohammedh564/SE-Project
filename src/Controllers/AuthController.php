@@ -1,22 +1,24 @@
 <?php
-require_once '../Modules/User.php';
-require_once '../Controllers/DBController.php';
+require_once "../Modules/User.php";
+require_once "../Controllers/DBControllor.php";
 class AuthController 
 {
-    protected $db;
+    // protected $db;
     //1.open connection
     //2. run query
     //3. close connection
-    public function __construct() {
-        $this->db = new DBController();
-        if (!$this->db->openConnection()) {
-            die("Database connection failed.");
-        }
-    }
-    protected function login (user $user){
-    if($this->db->openConnection()){
+    // public function __construct() {
+    //     $this->db = new DBController();
+    //     if (!$this->db->openConnection()) {
+    //         die("Database connection failed.");
+    //     }
+    // }
+    public function login (user $user){
+        $db = new DBController();
+        //open connection
+    if($db->openConnection()){
         $query = "SELECT * FROM  users WHERE email = '".$user->getEmail()."' AND password = '".$user->getPassword()."'";
-        $result = $this->db->select($query);
+        $result = $db->select($query);
         if(is_array($result)){
             if(count($result) == 0){
                 echo "Invalid email or password";
@@ -30,6 +32,10 @@ class AuthController
             echo "Error in query"; 
             return false;
         }
+    }
+    else{
+        echo "Connection failed";
+        return false;
     }
 }
 }
