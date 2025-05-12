@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_POST['action'] === 'add') {
 
 
-
       // Add user logic (already implemented)
       if (isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['terms'])) {
         $username = $_POST['username'];

@@ -24,11 +24,16 @@ class AuthController
         $result = $db->select($query);
         if(is_array($result)){
             if(count($result) == 0){
-                echo "Invalid email or password";
+                // session_start();
+                $_SESSION['err_msg'] = "Invalid email or password";
                 return false;
             }
             else{
+                // session_start();
                 echo "Login successful";
+                $_SESSION['userId'] = $result[0]["userId"];
+                $_SESSION['userName'] = $result[0]["name"];
+                $_SESSION['userEmail'] = $result[0]["email"];
                 return true;
             }
         }else{
