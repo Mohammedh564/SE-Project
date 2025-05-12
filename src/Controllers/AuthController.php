@@ -34,6 +34,7 @@ class AuthController
                 $_SESSION['userId'] = $result[0]["userId"];
                 $_SESSION['userName'] = $result[0]["name"];
                 $_SESSION['userEmail'] = $result[0]["email"];
+                $_SESSION['userRole'] = $result[0]["userRole"];
                 return true;
             }
         }else{

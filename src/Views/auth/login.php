@@ -16,6 +16,21 @@ if(isset($_POST['email-username']) && isset($_POST['password'])){
       $err_msg=$_SESSION['err_msg'];
     }
     else{
+      if(!isset($_SESSION['userRole'])){
+        session_start();
+      }
+      if($_SESSION['userRole'] == "admin"){
+        header("Location: ../../Views/admin/index.php");
+      }
+      else if($_SESSION['userRole'] == "donor"){
+        header("Location: ../../Views/donations/donations.php");
+      }
+      else if($_SESSION['userRole'] == "volunteer"){
+        header("Location: ../../Views/volunteer/index.php");
+      }
+      else{
+        header("Location: ../../Views/charity/index.php");
+      }
     }
 
   }
