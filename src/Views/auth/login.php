@@ -1,7 +1,8 @@
 <?php
-require_once '../../Modules/User.php';
-require_once "../../Controllers/DBControllor.php";
-require_once '../../Controllers/AuthController.php';
+include_once '../../Modules/User.php'; 
+include_once "../../Controllers/DBController.php"; 
+include_once '../../Controllers/AuthController.php'; 
+
 if(isset($_POST['email-username']) && isset($_POST['password'])){
   if(!empty($_POST['email-username']) && !empty($_POST['password'])){
     $user = new User;

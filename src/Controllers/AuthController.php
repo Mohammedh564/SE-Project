@@ -1,6 +1,9 @@
 <?php
-require_once "../Modules/User.php";
-require_once "../Controllers/DBControllor.php";
+
+include_once __DIR__ . '/../Modules/User.php'; 
+include_once __DIR__ . '/DBController.php'; 
+
+
 class AuthController 
 {
     // protected $db;
@@ -17,7 +20,7 @@ class AuthController
         $db = new DBController();
         //open connection
     if($db->openConnection()){
-        $query = "SELECT * FROM  users WHERE email = '".$user->getEmail()."' AND password = '".$user->getPassword()."'";
+        $query = "SELECT * FROM  user WHERE email = '".$user->getEmail()."' AND password = '".$user->getPassword()."'";
         $result = $db->select($query);
         if(is_array($result)){
             if(count($result) == 0){
