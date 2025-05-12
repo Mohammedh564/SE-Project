@@ -1,45 +1,34 @@
 <?php
-include_once '../../Modules/User.php'; 
-include_once "../../Controllers/DBController.php"; 
-include_once '../../Controllers/AuthController.php'; 
+session_start();
 $err_msg = "";
-if(isset($_POST['email-username']) && isset($_POST['password'])){
-  if(!empty($_POST['email-username']) && !empty($_POST['password'])){
-    $user = new User;
-    $user->setEmail($_POST['email-username']);
-    $user->setPassword($_POST['password']);
-    $auth = new AuthController;
-    if (!$auth->login($user)){
-      if(!isset($_SESSION['name'])){
-        session_start();
-      }
-      $err_msg=$_SESSION['err_msg'];
-    }
-    else{
-      if(!isset($_SESSION['userRole'])){
-        session_start();
-      }
-      if($_SESSION['userRole'] == "admin"){
-        header("Location: ../../Views/admin/index.php");
-      }
-      else if($_SESSION['userRole'] == "donor"){
-        header("Location: ../../Views/donations/donations.php");
-      }
-      else if($_SESSION['userRole'] == "volunteer"){
-        header("Location: ../../Views/volunteer/index.php");
-      }
-      else{
-        header("Location: ../../Views/charity/index.php");
-      }
-    }
 
-  }
-  else {
-    $err_msg = "Please fill in all fields";
-  }
+if (isset($_POST['email-username']) && isset($_POST['password'])) {
+    if (!empty($_POST['email-username']) && !empty($_POST['password'])) {
+        $user = new User;
+        $user->setEmail($_POST['email-username']);
+        $user->setPassword($_POST['password']);
+
+        $auth = new AuthController;
+        if (!$auth->login($user)) {
+            $err_msg = $_SESSION['err_msg'];
+        } else {
+            if ($_SESSION['userType'] == "admin") {
+                header("Location: ../../Views/admin/index.php");
+            } else if ($_SESSION['userType'] == "donor") {
+                header("Location: ../../Views/donations/donations.php");
+            } else if ($_SESSION['userType'] == "volunteer") {
+                header("Location: ../../Views/volunteer/index.php");
+            } else {
+                header("Location: ../../Views/charity/index.php");
+            }
+            exit;
+        }
+    } else {
+        $err_msg = "Please fill in all fields";
+    }
 }
-
 ?>
+
 
 <!DOCTYPE html>
 

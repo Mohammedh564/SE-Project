@@ -38,5 +38,14 @@ class DBController {
             return false;  
         }  
     }
+public function insert($query) {  
+    $result = $this->connection->query($query);  
+    if ($result === TRUE) {  
+        return true;  
+    } else {  
+        echo "Error: " . $this->connection->error;  
+        return false;  
+    }  
+}
 }  
 ?>
